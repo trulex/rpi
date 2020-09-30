@@ -1,0 +1,30 @@
+- block:
+    - name: Install script for downloading EPG
+      copy:
+        src: scripts/t2-epg.sh
+        dest: /usr/local/bin/t2-epg.sh
+
+    - name: Install service
+      copy:
+        src: systemd/t2-epg.service
+        dest: /etc/systemd/system/t2-epg.service
+
+    - name: Install service user config
+      copy:
+        src: systemd/t2-epg.service.d
+        dest: /etc/systemd/system/t2-epg.service.d
+
+    - name: Install timer
+      copy:
+        src: systemd/t2-epg.timer
+        dest: /etc/systemd/system/t2-epg.timer
+
+    - name: Reload systemd manager configuration
+      systemd: daemon_reload=yes
+
+    - name: Start and enable timer
+      systemd:
+        name: t2-epg.timer
+        state: started
+        enabled: yes
+  become: yes

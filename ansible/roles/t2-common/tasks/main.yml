@@ -1,0 +1,4 @@
+- name: Create T-2 directory
+  file:
+    path: /home/pi/t2-playlist
+    state: directory

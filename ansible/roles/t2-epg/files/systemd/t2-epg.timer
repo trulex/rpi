@@ -1,0 +1,11 @@
+[Unit]
+Description=T-2 EPG Download timer
+Requires=t2-epg.service
+
+[Timer]
+OnCalendar=daily
+Unit=t2-epg.service
+Persistent=true
+
+[Install]
+WantedBy=timers.target

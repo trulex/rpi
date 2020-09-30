@@ -1,0 +1,6 @@
+[Unit]
+Description=T-2 EPG Download service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/t2-epg.sh
