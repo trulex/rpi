@@ -1,0 +1,11 @@
+[Unit]
+Description=T-2 Playlist Download timer
+Requires=t2-playlist.service
+
+[Timer]
+OnCalendar=weekly
+Unit=t2-playlist.service
+Persistent=true
+
+[Install]
+WantedBy=timers.target

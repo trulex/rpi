@@ -1,0 +1,6 @@
+[Unit]
+Description=T-2 Playlist Download service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/t2-playlist.sh
