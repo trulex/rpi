@@ -1,0 +1,11 @@
+[Unit]
+Description=Pihole Gravity Update timer
+Requires=pihole-gravity.service
+
+[Timer]
+OnCalendar=daily
+Unit=pihole-gravity.service
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,26 @@
+- block:
+    - name: Install script for updating pihole gravity
+      copy:
+        src: scripts/pihole-gravity.sh
+        dest: /usr/local/bin/pihole-gravity.sh
+        mode: +x
+
+    - name: Install service
+      copy:
+        src: systemd/pihole-gravity.service
+        dest: /etc/systemd/system/pihole-gravity.service
+
+    - name: Install timer
+      copy:
+        src: systemd/pihole-gravity.timer
+        dest: /etc/systemd/system/pihole-gravity.timer
+
+    - name: Reload systemd manager configuration
+      systemd: daemon_reload=yes
+
+    - name: Start and enable timer
+      systemd:
+        name: pihole-gravity.timer
+        state: started
+        enabled: yes
+  become: yes
